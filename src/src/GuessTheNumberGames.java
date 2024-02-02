@@ -20,9 +20,9 @@ public class GuessTheNumberGames {
             intentosJugador1++;
 
             if (player2.getNumber() > eleccionJugador1) {
-                System.out.println("El número que buscas es mayor ❌\uD83E\uDD74");
+                System.out.println("El número que buscas es mayor ❌\uD83E\uDD74"+"*******************************************");
             } else if (player2.getNumber() < eleccionJugador1) {
-                System.out.println("El número que buscas es menor ❌\uD83E\uDD74");
+                System.out.println("El número que buscas es menor ❌\uD83E\uDD74"+"*******************************************");
             } else {
                 ganoJugador1 = true;
             }
@@ -31,12 +31,12 @@ public class GuessTheNumberGames {
             int numJugador2 = player2.getNumber();
             intentosJugador2++;
 
-            System.out.println("La Computadora ha escogido el número " + numJugador2);
+            System.out.println("La Computadora ha escogido el número " + numJugador2+"*******************************************");
 
             if (numJugador2 > player1.getNumber()) {
-                System.out.println("El número que la Computadora busca es mayor ❌\uD83E\uDD74"+"***********************");
+                System.out.println("El número que la Computadora busca es mayor ❌\uD83E\uDD74"+"*******************(°_°)*******************");
             } else if (numJugador2 < player1.getNumber()) {
-                System.out.println("El número que la Computadora busca es menor ❌\uD83E\uDD74");
+                System.out.println("El número que la Computadora busca es menor ❌\uD83E\uDD74"+"*******************************************");
             } else {
                 ganoJugador2 = true;
             }
@@ -44,12 +44,9 @@ public class GuessTheNumberGames {
         } while (!ganoJugador1 && !ganoJugador2);
 
         if (ganoJugador1) {
-            System.out.println("¡Felicidades, Jugador 1! \uD83D\uDC4D Has adivinado el número en " + intentosJugador1 + " intentos.");
+            System.out.println("¡Felicidades, Jugador 1! \uD83D\uDC4D Has adivinado el número en " + intentosJugador1 + " intentos."+"*********************************************");
         } else {
-            System.out.println("¡Felicidades, Computadora! \uD83D\uDC4D Has adivinado el número en " + intentosJugador2 + " intentos.");
-            System.out.println("***********************");
-            System.out.println("*     Fin del Juego    *");
-            System.out.println("***********************");
+            System.out.println("¡Felicidades, Computadora! \uD83D\uDC4D Has adivinado el número en " + intentosJugador2 + " intentos."+"*******************************************"+"Fin del juego"+"*******************************************");
 
         }
     }
