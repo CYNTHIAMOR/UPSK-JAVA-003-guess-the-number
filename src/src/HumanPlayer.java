@@ -8,22 +8,25 @@ public class HumanPlayer extends PlayerJava {
         super();
         this.scanner = new Scanner(System.in);
         setPlayerName();
+        welcomeMessage();
     }
 
     private void setPlayerName() {
-        System.out.println("Ingresa tu nombre:");
+        System.out.println("\nIngresa tu nombre:");
         this.playerName = scanner.nextLine();
+    }
+
+    private void welcomeMessage() {
+        System.out.println("Bienvenido a Guess The Number Games, " + getPlayerName() + "!");
+        System.out.println("🎮👾👋💻");
+    }
+
+    public int makeGuess() {
+        System.out.println("\nIngresa un número del 1 al 100:");
+        return scanner.nextInt();
     }
 
     public String getPlayerName() {
         return playerName;
     }
-
-    public int makeGuess() {
-        System.out.println("Bienvenido a Guess The Number Games, " + getPlayerName() + "!");
-        System.out.println("🎮👾👋 💻");
-        System.out.println("Ingresa un número del 1 al 100:");
-        return scanner.nextInt();
-    }
 }
-
