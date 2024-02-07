@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class HumanPlayer extends PlayerJava {
-    private Scanner scanner;
-    private String playerName;
+    public Scanner scanner;
+    public String playerName;
 
     public HumanPlayer() {
         super();
@@ -11,7 +11,7 @@ public class HumanPlayer extends PlayerJava {
         welcomeMessage();
     }
 
-    private void setPlayerName() {
+    public void setPlayerName() {
         System.out.println("\nIngresa tu nombre:");
         this.playerName = scanner.nextLine();
     }

@@ -1,23 +1,24 @@
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 
 public class GuessTheNumberGames {
-    public static void main(String[] args) {
-        Scanner leer = new Scanner(System.in);
-        Random r = new Random();
+    private PlayerJava player1;
+    private PlayerJava player2;
 
-        PlayerJava player1 = new HumanPlayer(); // Utilizamos la interfaz PlayerJava para permitir polimorfismo
-        PlayerJava player2 = new PlayerJava();
+    public GuessTheNumberGames(PlayerJava player1, PlayerJava player2) {
+        this.player1 = player1;
+        this.player2 = player2;
+    }
 
+    public String playGame() {
         int intentosJugador1 = 0;
         int intentosJugador2 = 0;
 
-        boolean ganoJugador1 = false;
-        boolean ganoJugador2 = false;
-
         ArrayList<Integer> numerosUsadosJugador1 = new ArrayList<>();
         ArrayList<Integer> numerosUsadosJugador2 = new ArrayList<>();
+
+        boolean ganoJugador1 = false;
+        boolean ganoJugador2 = false;
 
         do {
             int eleccionJugador1 = player1.makeGuess();
@@ -50,17 +51,17 @@ public class GuessTheNumberGames {
         } while (!ganoJugador1 && !ganoJugador2);
 
         if (ganoJugador1) {
-            System.out.println("¡Felicidades, Jugador 1! \uD83D\uDC4D Has adivinado el número en " + intentosJugador1 + " intentos.");
-            System.out.println("Intentos con los números: " + numerosUsadosJugador1);
-            System.out.println("***********************************************************************");
-            System.out.println("****                    FIN DEL JUEGO                               ***");
-            System.out.println("***********************************************************************");
+            return "¡Felicidades, Jugador 1! \uD83D\uDC4D Has adivinado el número en " + intentosJugador1 + " intentos." +
+                    "\nIntentos con los números: " + numerosUsadosJugador1 +
+                    "\n*************************" +
+                    "\n**                    FIN DEL JUEGO                               *" +
+                    "\n*************************";
         } else {
-            System.out.println("¡Felicidades, Computadora! \uD83D\uDC4D Has adivinado el número en " + intentosJugador2 + " intentos."+"Fin del juego");
-            System.out.println("Intentos con los números: " + numerosUsadosJugador2);
-            System.out.println("***********************************************************************");
-            System.out.println("****                    FIN DEL JUEGO                               ***");
-            System.out.println("***********************************************************************");
+            return "¡Felicidades, Computadora! \uD83D\uDC4D Has adivinado el número en " + intentosJugador2 + " intentos." + "Fin del juego" +
+                    "\nIntentos con los números: " + numerosUsadosJugador2 +
+                    "\n*************************" +
+                    "\n**                    FIN DEL JUEGO                               *" +
+                    "\n*************************";
         }
     }
 }

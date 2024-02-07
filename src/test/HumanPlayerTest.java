@@ -1,18 +1,40 @@
-import org.junit.jupiter.api.Test;
+import java.util.Scanner;
 
-import static org.junit.jupiter.api.Assertions.*;
+public class HumanPlayerTest extends PlayerJava {
 
-class HumanPlayerTest {
-    @Test
-    public void getPlayerName(){
-        HumanPlayer humanPlayer = new HumanPlayer();
+    private Scanner scanner;
+    private String playerName;
 
-        // Act
-
-        // Assert
-        assertNotNull(humanPlayer);
-        assertNotNull(humanPlayer.getScanner());
-        assertNotNull(humanPlayer.getPlayerName());
+    public HumanPlayerTest() {
+        super();
+        this.scanner = new Scanner(System.in);
+        setPlayerName();
+        welcomeMessage();
     }
 
+    public HumanPlayerTest(Scanner scanner) {
+        super();
+        this.scanner = scanner;
+        setPlayerName();
+        welcomeMessage();
+    }
+
+    private void setPlayerName() {
+        System.out.println("\nIngresa tu nombre:");
+        this.playerName = scanner.nextLine();
+    }
+
+    private void welcomeMessage() {
+        System.out.println("Bienvenido a Guess The Number Games, " + getPlayerName() + "!");
+        System.out.println("🎮👾👋💻");
+    }
+
+    public int makeGuess() {
+        System.out.println("\nIngresa un número del 1 al 100:");
+        return scanner.nextInt();
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
 }
