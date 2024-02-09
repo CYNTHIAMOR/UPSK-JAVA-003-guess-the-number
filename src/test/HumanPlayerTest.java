@@ -1,40 +1,39 @@
-import java.util.Scanner;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
-public class HumanPlayerTest extends PlayerJava {
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
 
-    private Scanner scanner;
-    private String playerName;
+import static org.junit.Assert.assertEquals;
 
-    public HumanPlayerTest() {
-        super();
-        this.scanner = new Scanner(System.in);
-        setPlayerName();
-        welcomeMessage();
+public class HumanPlayerTest {
+    private final InputStream originalSystemIn = System.in;
+    private final PrintStream originalSystemOut = System.out;
+    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+
+    @Before
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outputStreamCaptor));
     }
 
-    public HumanPlayerTest(Scanner scanner) {
-        super();
-        this.scanner = scanner;
-        setPlayerName();
-        welcomeMessage();
+    @After
+    public void restoreStreams() {
+        System.setIn(originalSystemIn);
+        System.setOut(originalSystemOut);
     }
 
-    private void setPlayerName() {
-        System.out.println("\nIngresa tu nombre:");
-        this.playerName = scanner.nextLine();
-    }
+    @Test
+    public void testMakeGuess() {
+        String input = "42\n"; // Input provided by the user
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
 
-    private void welcomeMessage() {
-        System.out.println("Bienvenido a Guess The Number Games, " + getPlayerName() + "!");
-        System.out.println("🎮👾👋💻");
-    }
+        HumanPlayer humanPlayer = new HumanPlayer("TestPlayer");
+        int guess = humanPlayer.makeGuess();
 
-    public int makeGuess() {
-        System.out.println("\nIngresa un número del 1 al 100:");
-        return scanner.nextInt();
-    }
-
-    public String getPlayerName() {
-        return playerName;
+        assertEquals(42, guess); // Verifying if the guess is correct
     }
 }
